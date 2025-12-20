@@ -1,0 +1,25 @@
+.categories {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  padding: 1rem;
+}
+
+.category-card {
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  padding: 1rem;
+  text-align: center;
+  background: #fff;
+}
+
+.category-card img {
+  height: 150px;
+  object-fit: contain;
+  margin-bottom: 1rem;
+}
+
+.category-card h3 {
+  font-size: 1rem;
+  text-transform: capitalize;
+}

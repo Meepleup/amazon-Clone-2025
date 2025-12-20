@@ -1,0 +1,134 @@
+/* TOP HEADER */
+.header {
+  display: flex;
+  align-items: center;
+  background: #00453e;
+  padding: 10px 16px;
+  color: white;
+  gap: 16px;
+}
+
+/* LEFT */
+.left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.logo {
+  width: 100px;
+}
+
+.location {
+  display: flex;
+  gap: 6px;
+  font-size: 12px;
+}
+
+.location span {
+  font-weight: bold;
+}
+
+/* SEARCH */
+.search {
+  display: flex;
+  flex: 1;
+  max-width: 720px;
+}
+
+.search select {
+  border: none;
+  padding: 8px;
+}
+
+.search input {
+  flex: 1;
+  border: none;
+  padding: 8px;
+}
+
+.search button {
+  background: #d81b60;
+  border: none;
+  padding: 0 16px;
+  color: white;
+  cursor: pointer;
+}
+
+/* RIGHT */
+.right {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.lang {
+  display: flex;
+  gap: 4px;
+  cursor: pointer;
+}
+
+.account,
+.orders {
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.account span,
+.orders span {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+/* CART */
+.cart {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.count {
+  position: absolute;
+  top: -6px;
+  left: 16px;
+  background: #f08804;
+  color: black;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 50%;
+}
+
+/* BOTTOM NAV */
+.subNav {
+  display: flex;
+  align-items: center;
+  background: #195851;
+  padding: 8px 16px;
+  color: white;
+  gap: 20px;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: bold;
+}
+
+.subNav ul {
+  display: flex;
+  gap: 16px;
+  list-style: none;
+  font-size: 14px;
+}
+
+.subNav li {
+  cursor: pointer;
+}
+
+.promo {
+  margin-left: auto;
+  font-weight: bold;
+}

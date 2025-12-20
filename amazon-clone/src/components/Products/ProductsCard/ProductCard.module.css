@@ -1,0 +1,87 @@
+/* Container for all products */
+.products_container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+/* Status messages */
+.status {
+  text-align: center;
+  padding: 40px;
+  font-size: 18px;
+}
+
+.status_error {
+  text-align: center;
+  padding: 40px;
+  color: red;
+  font-weight: bold;
+}
+
+/* Product card styles */
+.product_card {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.2s ease;
+}
+
+.product_card:hover {
+  transform: translateY(-5px);
+}
+
+.product_image {
+  max-width: 100%;
+  height: 200px;
+  object-fit: contain;
+  margin-bottom: 12px;
+}
+
+.product_title {
+  font-size: 16px;
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: 8px;
+  height: 48px; /* keep uniform height */
+  overflow: hidden;
+}
+
+.product_info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 12px;
+}
+
+.price {
+  font-weight: bold;
+  color: #111;
+}
+
+.rating {
+  color: #ffc107; /* gold stars */
+  display: flex;
+  gap: 2px;
+}
+
+.add_button {
+  padding: 8px 16px;
+  background-color: #ff9900;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+}
+
+.add_button:hover {
+  background-color: #e68a00;
+}
