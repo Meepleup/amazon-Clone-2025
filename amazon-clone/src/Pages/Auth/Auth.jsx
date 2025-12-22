@@ -4,14 +4,13 @@ import { Link, useNavigate } from "react-router-dom";
 import { FadeLoader } from "react-spinners";
 import LayOut from "../../components/layOut/LayOut";
 import { auth } from "../../Utility/firebase.js";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import { DataContext } from "../../components/dataProvider/DataProvider.jsx";
 import { type } from "../../Utility/actionType.js";
 
-function SignUp() {
+function Auth() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -22,20 +21,10 @@ function SignUp() {
     e.preventDefault();
     setError("");
 
-    if (password.length < 6) {
-      setError("Password must be at least 6 characters.");
-      return;
-    }
-
-    if (password !== confirmPassword) {
-      setError("Passwords do not match.");
-      return;
-    }
-
     try {
       setLoading(true);
 
-      const userInfo = await createUserWithEmailAndPassword(
+      const userInfo = await signInWithEmailAndPassword(
         auth,
         email,
         password
@@ -48,10 +37,12 @@ function SignUp() {
 
       navigate("/");
     } catch (err) {
-      if (err.code === "auth/email-already-in-use") {
-        setError("Email already exists.");
+      if (err.code === "auth/user-not-found") {
+        setError("No account found with this email.");
+      } else if (err.code === "auth/wrong-password") {
+        setError("Incorrect password.");
       } else {
-        setError("Account creation failed.");
+        setError("Sign in failed. Please try again.");
       }
     } finally {
       setLoading(false);
@@ -66,7 +57,7 @@ function SignUp() {
         </Link>
 
         <div className={styles.card}>
-          <h1>Create account</h1>
+          <h1>Sign In</h1>
 
           {error && <div className={styles.error}>{error}</div>}
 
@@ -91,35 +82,30 @@ function SignUp() {
               />
             </div>
 
-            <div className={styles.inputGroup}>
-              <label>Confirm Password</label>
-              <input
-                type="password"
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-                required
-              />
-            </div>
-
             <button type="submit" disabled={loading}>
               {loading ? (
                 <FadeLoader height={6} width={3} radius={2} color="#111" />
               ) : (
-                "Create your Amazon account"
+                "Sign In"
               )}
             </button>
           </form>
 
           <p className={styles.infoText}>
-            Already have an account?
-            <Link to="/auth" className={styles.link}>
-              Sign in
-            </Link>
+            By continuing, you agree to AMAZON CLONE Conditions of Use & Sale.
           </p>
+
+          <div className={styles.divider}>
+            <span>New to Amazon?</span>
+          </div>
+
+          <Link to="/signup" className={styles.secondaryButton}>
+            Create your Amazon account
+          </Link>
         </div>
       </section>
     </LayOut>
   );
 }
 
-export default SignUp;
+export default Auth;
